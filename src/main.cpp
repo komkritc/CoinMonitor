@@ -125,6 +125,10 @@ void myTimerEvent()
     tft.setTextSize(3);
     tft.drawString(String(ethereum_usd_24h_change), 80, tft.height() / 2 + 38);
     tft.setTextDatum(TL_DATUM);
+
+    tft.setTextSize(1);
+    tft.drawString("ETH-USD Live", 10, 10);
+    tft.setTextDatum(TL_DATUM);
   }
 }
 
