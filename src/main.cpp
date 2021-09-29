@@ -96,7 +96,7 @@ void myTimerEvent()
     Serial.print("USD: ");
     Serial.println(bitcoin_usd);
     Serial.print("USD 24hr %: ");
-    Serial.println(ethereum_usd_24h_change);
+    Serial.println(bitcoin_usd_24h_change);
 
     //    Serial.print("EUR: ");
     //    Serial.println(ethereum_eur);
@@ -118,11 +118,18 @@ void myTimerEvent()
     tft.fillScreen(TFT_BLACK);
     tft.setTextDatum(MC_DATUM);
     tft.setTextSize(5);
+    tft.setTextColor(TFT_WHITE);
 
     tft.drawString(String(ethereum_usd, 0), tft.width() / 2, tft.height() / 2);
     tft.setTextDatum(TL_DATUM);
 
     tft.setTextSize(3);
+
+    if (ethereum_usd_24h_change >= 0)
+      tft.setTextColor(TFT_GREEN);
+    else
+      tft.setTextColor(TFT_RED);
+
     tft.drawString(String(ethereum_usd_24h_change), 80, tft.height() / 2 + 38);
     tft.setTextDatum(TL_DATUM);
 
@@ -210,6 +217,7 @@ void setup()
 
   tft.setRotation(1);
   tft.setTextSize(2);
+  tft.setTextColor(TFT_GREEN);
   tft.drawString("Waiting Internet...", tft.width() / 2, tft.height() / 2);
   tft.setTextDatum(TL_DATUM);
 
